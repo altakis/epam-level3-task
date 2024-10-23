@@ -13,7 +13,7 @@ describe('UC-1 Test Login form with empty credentials', () => {
         //await loginPage.clearLoginFormCredentials();
         await loginPage.submitLoginFormWithNoCredentials();
         await loginPage.isFlashBannerDisplayed();
-        await loginPage.checkFlashBannerMessage('Epic sadface: Username is required');
+        await loginPage.checkFlashBannerMessage('Username is required');
     });
 });
 
