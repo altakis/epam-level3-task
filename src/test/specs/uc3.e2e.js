@@ -17,6 +17,7 @@ describe('UC-3 Test Login form with credentials by passing Username & Password',
             await loginPage.items.password.setValue(testPassword);
             await loginPage.submitLoginForm();
             await inventoryPage.checkPageTitle('Swags Labs');
+            await inventoryPage.logoutSession();
         });
     }
 });

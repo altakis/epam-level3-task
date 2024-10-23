@@ -11,6 +11,10 @@ class InventoryPage {
     async checkPageTitle(title) {
         return await expect(this.items.pageTitle).toHaveText(expect.stringContaining(title));
     }
+
+    async logoutSession() {
+        return await this.items.logoutSession.click();
+    }
 }
 
 
