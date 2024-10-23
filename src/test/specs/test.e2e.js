@@ -1,14 +1,22 @@
 const { expect, browser, $ } = require('@wdio/globals')
-const LoginPage = require('../../po/pages/login.page');
+const LoginPage = require('../../pom/pages/login.page');
 const loginPage = new LoginPage();
 
-describe('My Login application', () => {
-    it('should open the app in the expected hosting', async () => {
+describe('saucedemo test battery', () => {
+    it('It should open the correct app website', async () => {
         await loginPage.open();
-        await expect(browser).toHaveTitle('The Internet');
-        await loginPage.checkFormTitle('Login Page');
-    })
-    it('should login with valid credentials', async () => {
+        await expect(browser).toHaveTitle('Swag Labs');
+    });
+    it('UC-1 Test Login form with empty credentials', async () => {
+        await loginPage.open();
+        await loginPage.items.username.setValue('test');
+        await loginPage.items.password.setValue('test');
+        await loginPage.clearLoginFormCredentials();
+        await loginPage.submitLoginForm();
+        await loginPage.isFlashBannerDisplayed();
+        await loginPage.checkFlashBannerMessage('Epic sadface: Username is required');
+    });
+    /* it('should login with valid credentials', async () => {
         await loginPage.open();
 
         await loginPage.items.username.setValue('tomsmith');
@@ -17,7 +25,7 @@ describe('My Login application', () => {
 
         await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerMessage('You logged into a secure area!');
-    })
+    });
 
     it('should show an username invalid error with no credentials', async () => {
         await loginPage.open();
@@ -27,7 +35,7 @@ describe('My Login application', () => {
         await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerAttribute('class', 'flash error');
         await loginPage.checkFlashBannerMessage('Your username is invalid!');
-    })
+    });
 
     it('should show an username invalid error with invalid username', async () => {
         await loginPage.open();
@@ -38,7 +46,7 @@ describe('My Login application', () => {
         await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerAttribute('class', 'flash error');
         await loginPage.checkFlashBannerMessage('Your username is invalid!');
-    })
+    });
 
     it('should show an password invalid error with valid username an no password', async () => {
         await loginPage.open();
@@ -49,7 +57,7 @@ describe('My Login application', () => {
         await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerAttribute('class', 'flash error');
         await loginPage.checkFlashBannerMessage('Your password is invalid!');
-    })
+    });
 
     it('should show an password invalid error with valid username and wrong password', async () => {
         await loginPage.open();
@@ -61,6 +69,6 @@ describe('My Login application', () => {
         await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerAttribute('class', 'flash error');
         await loginPage.checkFlashBannerMessage('Your password is invalid!');
-    })
+    }); */
 })
 

@@ -5,7 +5,7 @@ Launch URL: https://www.saucedemo.com/
 
 ### UC-1 Test Login form with empty credentials:
 
-  - [ ] Type any credentials into "Username" and "Password" fields.
+- [ ] Type any credentials into "Username" and "Password" fields.
 
 - [ ] Clear the inputs.
 

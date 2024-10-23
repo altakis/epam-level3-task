@@ -4,14 +4,19 @@ class LoginPage {
         this.items = new ContentContainer();
     }
     async open() {
-        await browser.url(`https://the-internet.herokuapp.com/login`);
+        return await browser.url(`https://www.saucedemo.com/`);
     }
 
-    async submit() {
-        await this.items.submitButton.click()
+    async submitLoginForm() {
+        return await this.items.submitButton.click()
     }
 
-    async checkFormTitle(title){
+    async clearLoginFormCredentials() {
+        await this.items.username.clearValue();
+        return await this.items.password.clearValue();
+    }
+
+    async checkFormTitle(title) {
         return await expect(this.items.formTitle).toHaveText(expect.stringContaining(title));
     }
 
@@ -23,7 +28,7 @@ class LoginPage {
         return await expect(this.items.flashBanner).toHaveText(expect.stringContaining(msg));
     }
 
-    async checkFlashBannerAttribute(attr, value){        
+    async checkFlashBannerAttribute(attr, value) {
         return await expect(this.items.flashBanner).toHaveAttribute(attr, value);
     }
 }
