@@ -1,4 +1,4 @@
-const ContentContainer = require('../components/login/contentContainer.component');
+const ContentContainer = require('../components/login/elementsContainer.component');
 class LoginPage {
     constructor() {
         this.items = new ContentContainer();
