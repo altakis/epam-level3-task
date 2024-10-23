@@ -1,30 +1,30 @@
 const ContentContainer = require('../components/login/contentContainer.component');
 class LoginPage {
     constructor() {
-        this.contentContainer = new ContentContainer();
+        this.items = new ContentContainer();
     }
     async open() {
         await browser.url(`https://the-internet.herokuapp.com/login`);
     }
 
     async submit() {
-        await this.contentContainer.submitButton.click()
+        await this.items.submitButton.click()
     }
 
     async checkFormTitle(title){
-        return await expect(this.contentContainer.formTitle).toHaveText(expect.stringContaining(title));
+        return await expect(this.items.formTitle).toHaveText(expect.stringContaining(title));
     }
 
-    async checkFlashBannerAvailability() {
-        return await expect(this.contentContainer.flashBanner).toBeExisting();
+    async isFlashBannerDisplayed() {
+        return await expect(this.items.flashBanner).toBeDisplayed();
     }
 
     async checkFlashBannerMessage(msg) {
-        return await expect(this.contentContainer.flashBanner).toHaveText(expect.stringContaining(msg));
+        return await expect(this.items.flashBanner).toHaveText(expect.stringContaining(msg));
     }
 
     async checkFlashBannerAttribute(attr, value){        
-        return await expect(this.contentContainer.flashBanner).toHaveAttribute(attr, value);
+        return await expect(this.items.flashBanner).toHaveAttribute(attr, value);
     }
 }
 

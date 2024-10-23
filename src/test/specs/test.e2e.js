@@ -11,11 +11,11 @@ describe('My Login application', () => {
     it('should login with valid credentials', async () => {
         await loginPage.open();
 
-        await loginPage.contentContainer.username.setValue('tomsmith');
-        await loginPage.contentContainer.password.setValue('SuperSecretPassword!');
+        await loginPage.items.username.setValue('tomsmith');
+        await loginPage.items.password.setValue('SuperSecretPassword!');
         await loginPage.submit();
 
-        await loginPage.checkFlashBannerAvailability();
+        await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerMessage('You logged into a secure area!');
     })
 
@@ -24,7 +24,7 @@ describe('My Login application', () => {
 
         await loginPage.submit();
 
-        await loginPage.checkFlashBannerAvailability();
+        await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerAttribute('class', 'flash error');
         await loginPage.checkFlashBannerMessage('Your username is invalid!');
     })
@@ -32,10 +32,10 @@ describe('My Login application', () => {
     it('should show an username invalid error with invalid username', async () => {
         await loginPage.open();
 
-        await loginPage.contentContainer.username.setValue('random');
+        await loginPage.items.username.setValue('random');
         await loginPage.submit();
 
-        await loginPage.checkFlashBannerAvailability();
+        await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerAttribute('class', 'flash error');
         await loginPage.checkFlashBannerMessage('Your username is invalid!');
     })
@@ -43,10 +43,10 @@ describe('My Login application', () => {
     it('should show an password invalid error with valid username an no password', async () => {
         await loginPage.open();
 
-        await loginPage.contentContainer.username.setValue('tomsmith');
+        await loginPage.items.username.setValue('tomsmith');
         await loginPage.submit();
 
-        await loginPage.checkFlashBannerAvailability();
+        await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerAttribute('class', 'flash error');
         await loginPage.checkFlashBannerMessage('Your password is invalid!');
     })
@@ -54,11 +54,11 @@ describe('My Login application', () => {
     it('should show an password invalid error with valid username and wrong password', async () => {
         await loginPage.open();
 
-        await loginPage.contentContainer.username.setValue('tomsmith');
-        await loginPage.contentContainer.password.setValue('random');
+        await loginPage.items.username.setValue('tomsmith');
+        await loginPage.items.password.setValue('random');
         await loginPage.submit();
 
-        await loginPage.checkFlashBannerAvailability();
+        await loginPage.isFlashBannerDisplayed();
         await loginPage.checkFlashBannerAttribute('class', 'flash error');
         await loginPage.checkFlashBannerMessage('Your password is invalid!');
     })

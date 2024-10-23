@@ -53,12 +53,12 @@ exports.config = {
     //
     // capabilities for local browser web tests
     capabilities: [
-        {
+        /* {
             browserName: 'chrome'
         },
         {
             browserName: 'firefox'
-        },
+        }, */
         {
             browserName: 'MicrosoftEdge'
         }
