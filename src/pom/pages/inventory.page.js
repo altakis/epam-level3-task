@@ -1,4 +1,4 @@
-const ContentContainer = require('../components/inventory/contentContainer.component');
+const ContentContainer = require('../components/inventory/elementsContainer.component');
 class InventoryPage {
     constructor() {
         this.items = new ContentContainer();
